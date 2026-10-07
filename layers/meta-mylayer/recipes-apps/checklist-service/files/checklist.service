@@ -1,0 +1,15 @@
+[Unit]
+Description=Checklist web server
+ConditionPathExists=/usr/local/bin/checklist
+After=network-online.target time-sync.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/checklist
+Restart=on-failure
+DynamicUser=yes
+StateDirectory=checklist
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

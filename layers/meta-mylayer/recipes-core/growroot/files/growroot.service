@@ -1,0 +1,11 @@
+[Unit]
+Description=Expand root partition on first boot
+ConditionPathExists=!/etc/growroot.done
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/growroot
+
+[Install]
+WantedBy=multi-user.target
