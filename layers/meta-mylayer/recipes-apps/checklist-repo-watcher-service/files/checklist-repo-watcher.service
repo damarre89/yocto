@@ -1,0 +1,15 @@
+[Unit]
+Description=Checklist repo watcher
+ConditionPathExists=/usr/local/bin/checklist-repo-watcher
+After=network-online.target time-sync.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/checklist-repo-watcher
+Restart=on-failure
+DynamicUser=yes
+StateDirectory=checklist-repo-watcher
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
