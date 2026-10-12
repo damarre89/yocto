@@ -7,9 +7,10 @@ Wants=network-online.target
 [Service]
 ExecStart=/usr/local/bin/checklist-repo-watcher
 Restart=on-failure
-DynamicUser=yes
-StateDirectory=checklist-repo-watcher
-AmbientCapabilities=CAP_NET_BIND_SERVICE
+User=root
+Environment=HOME=/root
+Environment=PATH=/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin
+DynamicUser=no
 
 [Install]
 WantedBy=multi-user.target
